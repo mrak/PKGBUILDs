@@ -1,0 +1,34 @@
+# $Id: PKGBUILD 106937 2014-03-10 18:31:13Z jelle $
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Arch Haskell Team <arch-haskell@haskell.org>
+
+pkgname=xmobar
+pkgver=0.20.1
+pkgrel=1
+pkgdesc="A Minimalistic Text Based Status Bar"
+url="http://hackage.haskell.org/package/xmobar"
+license=('custom:BSD3')
+arch=('i686' 'x86_64')
+depends=('gmp' 'libxft' 'libxinerama' 'libxrandr' 'dbus')
+makedepends=('ghc' 'cabal-install')
+options=('strip')
+source=(http://hackage.haskell.org/packages/archive/xmobar/$pkgver/xmobar-$pkgver.tar.gz)
+md5sums=('cee66bfa9aa36d25329ffd5ac044aeaf')
+
+build() {
+    cd ${srcdir}/xmobar-$pkgver
+
+    cabal sandbox init
+    cabal update
+    cabal install --only-dependencies
+    cabal install dbus
+    cabal configure --prefix=/usr --flags="with_utf8 with_xft with_dbus with_threaded"
+    cabal build
+}
+
+package() {
+    cd ${srcdir}/xmobar-$pkgver
+    cabal copy --destdir=${pkgdir}
+    install -D -m644 license ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+}
+

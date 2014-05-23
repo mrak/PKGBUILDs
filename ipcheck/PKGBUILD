@@ -1,0 +1,33 @@
+# Maintainer: Eric Mrak <mail AT ericmrak DOT info>
+pkgname=ipcheck-git
+_gitname='ipcheck'
+pkgver=b3a787e
+pkgrel=1
+pkgdesc="Periodically checks the current public IP and updates a Dreamhost A record."
+arch=("any")
+url="https://github.com/mrak/ipcheck.git"
+license=('WTF')
+depends=()
+makedepends=('git')
+provides=('ipcheck')
+conflicts=('ipcheck')
+source=('git+https://github.com/mrak/ipcheck.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$_gitname"
+  git describe --always | sed 's|-|.|g'
+}
+
+package() {
+  cd "$_gitname"
+
+  install -D -m644 ipcheck.service ${pkgdir}/usr/lib/systemd/system/ipcheck.service
+  install -D -m600 ipcheck.environment ${pkgdir}/etc/conf.d/ipcheck.example
+  install -D -m644 ipcheck-daily.timer ${pkgdir}/usr/lib/systemd/system/ipcheck-daily.timer
+  install -D -m644 ipcheck-daily.target ${pkgdir}/usr/lib/systemd/system/ipcheck-daily.target
+  install -D -m755 ipcheck ${pkgdir}/usr/bin/ipcheck
+  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/$_gitname/LICENSE
+}
+
+# vim:set ts=2 sw=2 et:

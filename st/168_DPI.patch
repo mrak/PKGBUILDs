@@ -1,0 +1,13 @@
+diff --git a/st/config.def.h b/st/config.def.h
+index 2772c35..ed12e63 100644
+--- a/st/config.def.h
++++ b/st/config.def.h
+@@ -5,7 +5,7 @@
+  *
+  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+  */
+-static char font[] = "Source Code Pro:pixelsize=13";
++static char font[] = "Source Code Pro:size=10:dpi=168:antialias=true:rgba=rgb:hinting=true:hintstyle=hintfull:lcdfilter=lcddefault:autohint=0";
+ static int borderpx = 2;
+ static char shell[] = "/bin/sh";
+ 

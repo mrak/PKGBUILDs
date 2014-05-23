@@ -1,0 +1,14 @@
+post_install() {
+    echo "
+First set up your API key and A record to monitor:
+
+# cp /etc/conf.d/ipcheck.example /etc/conf.d/ipcheck
+# vi /etc/conf.d/ipcheck
+
+To enable daily checking of your dynamic IP address:
+
+# systemctl enable ipcheck
+# systemctl enable ipcheck-daily.timer
+# systemctl start ipcheck-daily.timer
+"
+}
