@@ -3,6 +3,7 @@ pkgname="${_name}-git"
 pkgver=136.4bbd772
 pkgrel=1
 pkgdesc="A notification system for tiling window managers"
+groups=('modified')
 arch=('any')
 url="https://github.com/mrak/twmn"
 license=('LGPL3')

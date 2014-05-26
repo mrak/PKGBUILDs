@@ -10,6 +10,7 @@ pkgver=0.6
 pkgrel=2
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('i686' 'x86_64')
+groups=('modified')
 url='http://surf.suckless.org/'
 license=('MIT')
 depends=('libwebkit' 'xorg-xprop')

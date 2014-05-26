@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="A fork of zenity - display graphical dialogs from shell scripts or command line"
 url="http://sourceforge.net/projects/yad-dialog"
 arch=('x86_64' 'i686')
+groups=('modified')
 license=('GPL3')
 depends=('gtk3' 'hicolor-icon-theme')
 makedepends=('intltool')
