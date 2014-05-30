@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Source Code Pro:pixelsize=13";
+static char font[] = "monospace:size=10";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 

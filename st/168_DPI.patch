@@ -6,8 +6,8 @@ index 2772c35..ed12e63 100644
   *
   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
   */
--static char font[] = "Source Code Pro:pixelsize=13";
-+static char font[] = "Source Code Pro:size=10:dpi=168:antialias=true:rgba=rgb:hinting=true:hintstyle=hintfull:lcdfilter=lcddefault:autohint=0";
+-static char font[] = "monospace:size=10";
++static char font[] = "monospace:size=10:dpi=168:antialias=true:rgba=rgb:hinting=true:hintstyle=hintfull:lcdfilter=lcddefault:autohint=0";
  static int borderpx = 2;
  static char shell[] = "/bin/sh";
  
