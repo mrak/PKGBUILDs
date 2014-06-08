@@ -26,7 +26,7 @@ static Bool hidebackground  = FALSE;
 
 #define SETPROP(p, q) { \
 	.v = (char *[]){ "/bin/sh", "-c", \
-		"prop=\"`xprop -id $2 $0 | cut -d '\"' -f 2 | dmenu -p '~>' -i -z -fn 'Source Code Pro:pixelsize=13' -sb 'seagreen' -sf 'black' -nf '#999999' -nb '#272521'`\" &&" \
+		"prop=\"`xprop -id $2 $0 | cut -d '\"' -f 2 | dmenu -p '~>' $DMENU_OPTIONS`\" &&" \
 		"xprop -id $2 -f $1 8s -set $1 \"$prop\"", \
 		p, q, winid, NULL \
 	} \
