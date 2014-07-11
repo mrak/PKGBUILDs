@@ -69,13 +69,11 @@ static const char *colorname[] = {
 	"#729FCF",
 	"#AD7FA8",
 	"#34E2E2",
-	"#EEEEEC",
+	"#F5F5F5",
 
-	[255] = 0,
+	[255] = 0
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-    "#262626"
 };
 
 
@@ -83,9 +81,9 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-static unsigned int defaultfg = 256;
-static unsigned int defaultbg = 257;
-static unsigned int defaultcs = 256;
+static unsigned int defaultfg = 15;
+static unsigned int defaultbg = 235;
+static unsigned int defaultcs = 15;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
