@@ -1,6 +1,6 @@
 _name=twmn
 pkgname="${_name}-git"
-pkgver=136.4bbd772
+pkgver=137.a4fd16d
 pkgrel=1
 pkgdesc="A notification system for tiling window managers"
 groups=('modified')
