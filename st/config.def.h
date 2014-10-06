@@ -83,7 +83,7 @@ static const char *colorname[] = {
  */
 static unsigned int defaultfg = 15;
 static unsigned int defaultbg = 235;
-static unsigned int defaultcs = 15;
+static unsigned int defaultcs = 12;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
