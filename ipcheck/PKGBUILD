@@ -11,7 +11,7 @@ depends=()
 makedepends=('git')
 provides=('ipcheck')
 conflicts=('ipcheck')
-source=('git+https://github.com/mrak/ipcheck.git')
+source=('git+https://github.com/mrak/ipcheck.git#linode')
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,8 +24,7 @@ package() {
 
   install -D -m644 ipcheck.service ${pkgdir}/usr/lib/systemd/system/ipcheck.service
   install -D -m600 ipcheck.environment ${pkgdir}/etc/conf.d/ipcheck.example
-  install -D -m644 ipcheck-daily.timer ${pkgdir}/usr/lib/systemd/system/ipcheck-daily.timer
-  install -D -m644 ipcheck-daily.target ${pkgdir}/usr/lib/systemd/system/ipcheck-daily.target
+  install -D -m644 ipcheck.timer ${pkgdir}/usr/lib/systemd/system/ipcheck.timer
   install -D -m755 ipcheck ${pkgdir}/usr/bin/ipcheck
   install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/$_gitname/LICENSE
 }

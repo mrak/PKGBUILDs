@@ -7,8 +7,7 @@ First set up your API key and A record to monitor:
 
 To enable daily checking of your dynamic IP address:
 
-# systemctl enable ipcheck
-# systemctl enable ipcheck-daily.timer
-# systemctl start ipcheck-daily.timer
+# systemctl enable ipcheck.timer
+# systemctl start ipcheck.timer
 "
 }
