@@ -1,0 +1,39 @@
+# Maintainer: Eric Mrak <mail at ericmrak dot info>
+# vim:set ts=2 sw=2 et:
+pkgname=dvtm-git
+_gitname=dvtm
+pkgver=v0.14.r0.g0c7f8f9
+pkgrel=1
+pkgdesc="Tiling window management for the console"
+url="http://www.brain-dump.org/projects/dvtm/"
+groups=('modified')
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('ncurses')
+makedepends=('git')
+provides=('dvtm')
+conflicts=('dvtm')
+source=("git+http://repo.or.cz/${_gitname}.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd $_gitname
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $_gitname
+  if [ -f ../../config.h ]; then
+    cp ../../config.h .
+  fi
+
+  make clean
+  make
+}
+
+package() {
+  cd $_gitname
+
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+}
