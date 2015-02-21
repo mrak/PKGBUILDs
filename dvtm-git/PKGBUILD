@@ -21,11 +21,15 @@ pkgver() {
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd $_gitname
   if [ -f ../../config.h ]; then
     cp ../../config.h .
   fi
+}
+
+build() {
+  cd $_gitname
 
   make clean
   make

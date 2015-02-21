@@ -4,8 +4,8 @@
 # Contributor: bender02 at gmx dot com
 
 pkgname=dvtm
-pkgver=0.13
-pkgrel=2
+pkgver=0.14
+pkgrel=1
 pkgdesc='Dynamic virtual terminal manager.'
 arch=('i686' 'x86_64')
 url='http://www.brain-dump.org/projects/dvtm/'
@@ -16,14 +16,13 @@ provides=('dvtm')
 conflicts=('dvtm-git')
 source=("http://www.brain-dump.org/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'config.h')
-md5sums=('f4ab17eb6e79939182a40f66968ca5d0'
+md5sums=('44ec5176b1996fdffd97cabe9a35ea0c'
          'SKIP')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	cp "${srcdir}/config.h" .
-	sed -i 's/CFLAGS =/CFLAGS +=/' config.mk
 }
 
 build() {
