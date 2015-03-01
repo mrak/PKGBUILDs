@@ -4,13 +4,13 @@
 
 pkgname=xmobar
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minimalistic Text Based Status Bar"
 url="http://hackage.haskell.org/package/xmobar"
 license=('custom:BSD3')
 groups=('modified')
 arch=('i686' 'x86_64')
-depends=('gmp' 'libxft' 'libxinerama' 'libxrandr' 'dbus')
+depends=('gmp' 'libxft' 'libxinerama' 'libxrandr' 'dbus' 'libxpm')
 makedepends=('ghc' 'cabal-install')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/xmobar/$pkgver/xmobar-$pkgver.tar.gz)
@@ -23,7 +23,7 @@ build() {
     cabal update
     cabal install --only-dependencies
     cabal install dbus
-    cabal configure --prefix=/usr --flags="with_utf8 with_xft with_dbus with_threaded"
+    cabal configure --prefix=/usr --flags="with_utf8 with_xft with_dbus with_threaded with_xpm"
     cabal build
 }
 
