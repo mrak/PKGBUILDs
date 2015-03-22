@@ -36,14 +36,6 @@ static Color colors[] = {
 #define BAR_POS         BAR_BOTTOM /* BAR_TOP, BAR_BOTTOM, BAR_OFF */
 /* whether status bar should be hidden if only one client exists */
 #define BAR_AUTOHIDE    true
-/* determines whether the statusbar text should be right or left aligned */
-#define BAR_ALIGN       ALIGN_RIGHT
-/* separator between window title and window number */
-#define SEPARATOR " #"
-/* printf format string for the window title, first %s
- * is replaced by the title, second %s is replaced by
- * the SEPARATOR, %d stands for the window number */
-#define TITLE "[%s%s%d]"
 /* master width factor [0.1 .. 0.9] */
 #define MFACT 0.5
 /* number of clients in master area */
@@ -119,8 +111,6 @@ static KeyBinding bindings[] = {
 	{ { MOD, 'e',          }, { copymode,       { NULL }                    } },
 	{ { MOD, '/',          }, { copymode,       { "/" }                     } },
 	{ { MOD, 'p',          }, { paste,          { NULL }                    } },
-	{ { CTRL('Y'),         }, { scrollback,     { "-1" }                    } },
-	{ { CTRL('E'),         }, { scrollback,     { "1"  }                    } },
 	{ { MOD, KEY_PPAGE,    }, { scrollback,     { "-1" }                    } },
 	{ { MOD, KEY_NPAGE,    }, { scrollback,     { "1"  }                    } },
 	{ { MOD, '?',          }, { create,         { "man dvtm", "dvtm help" } } },
