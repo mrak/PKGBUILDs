@@ -97,8 +97,10 @@ static unsigned int defaultunderline = 7;
 /* Beware that overloading Button1 will disable the selection. */
 static Mousekey mshortcuts[] = {
 	/* button               mask            string */
-	{ Button4,              XK_ANY_MOD,     "\031" },
-	{ Button5,              XK_ANY_MOD,     "\005" },
+	//{ Button4,              XK_ANY_MOD,     "\031" },
+	//{ Button5,              XK_ANY_MOD,     "\005" },
+	{ Button4,              XK_ANY_MOD,     "\033[5;2~" }, // Shift+pageup
+	{ Button5,              XK_ANY_MOD,     "\033[6;2~" }, // shift+pagedown
 };
 
 /* Internal keyboard shortcuts. */
