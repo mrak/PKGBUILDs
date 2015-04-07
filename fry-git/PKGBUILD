@@ -27,4 +27,3 @@ package() {
   make PREFIX="$pkgdir/usr" install
   install -D LICENSE.txt $pkgdir/usr/share/licenses/$_gitname/LICENSE
 }
-
