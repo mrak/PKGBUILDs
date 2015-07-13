@@ -1,8 +1,8 @@
 # Maintainer: Eric Mrak <mail at ericmrak dot info>
 # vim:set ts=2 sw=2 et:
 pkgname=st
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64')
 groups=('modified')
@@ -11,16 +11,16 @@ depends=('libxext' 'libxft')
 makedepends=('ncurses')
 url="http://st.suckless.org"
 source=(config.h
-        http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz
-        http://st.suckless.org/patches/st-$pkgver-hidexcursor.diff)
+        http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz)
+        #http://st.suckless.org/patches/st-$pkgver-hidexcursor.diff
 md5sums=('SKIP'
-         '4f8ae2737120a8cba34b23c6020fe51e'
-         '845e7940ce04351b8e4b76b019ffdbdb')
+         '1a926f450b4eacb7e2f5ac5b8ffea7c8')
+         #'4f8ae2737120a8cba34b23c6020fe51e'
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   cp $srcdir/config.h .
-  patch -i $srcdir/st-0.5-hidexcursor.diff
+  #patch -i $srcdir/st-0.5-hidexcursor.diff
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
