@@ -1,0 +1,36 @@
+# Maintainer: mail at ericmrak dot info
+
+pkgname=ttf-input
+pkgver=20150831
+pkgrel=1
+pkgdesc="Fonts for Code, from Font Bureau"
+arch=('any')
+url="http://input.fontbureau.com/"
+license=('custom:Font Software License Agreement')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+makedepends=()
+conflicts=()
+
+_fontSelection=whole
+_a=0
+_g=0
+_i=topserif
+_l=serifs_round
+_zero=0
+_asterisk=height
+_braces=straight
+_preset=sourcecode
+_line_height="1.4"
+
+source=("Input-Font.zip::http://input.fontbureau.com/build/?fontSelection=${_fontSelection}&a=${_a}&g=${_g}&i=${_i}&l=${_l}&zero=${_zero}&asterisk=${_asterisk}&braces=${_braces}&preset=${_preset}&line-height=${_line_height}&accept=I+do&email=")
+sha256sums=('5a3097430c7ca72b4cb6e8c88e4aee255616166be7452c22a37534c71291b196')
+install=$pkgname.install
+
+package() {
+  mkdir -p $pkgdir/usr/share/fonts/TTF
+  find $srcdir/Input_Fonts -name '*.ttf' -exec cp {} $pkgdir/usr/share/fonts/TTF \;
+    chmod 644 $pkgdir/usr/share/fonts/TTF/*
+
+  mkdir -p $pkgdir/usr/share/licenses/$pkgname
+  cp $srcdir/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname
+}
