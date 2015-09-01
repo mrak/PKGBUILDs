@@ -20,10 +20,10 @@ _zero=0
 _asterisk=height
 _braces=straight
 _preset=sourcecode
-_line_height="1.4"
+_line_height="1.2"
 
 source=("Input-Font.zip::http://input.fontbureau.com/build/?fontSelection=${_fontSelection}&a=${_a}&g=${_g}&i=${_i}&l=${_l}&zero=${_zero}&asterisk=${_asterisk}&braces=${_braces}&preset=${_preset}&line-height=${_line_height}&accept=I+do&email=")
-sha256sums=('5a3097430c7ca72b4cb6e8c88e4aee255616166be7452c22a37534c71291b196')
+sha256sums=('97bf7cd2eb2b43042343cd0085de0c8d8ab985711d850868a316d9263e6e4f67')
 install=$pkgname.install
 
 package() {
