@@ -2,7 +2,7 @@
 # vim:set ts=2 sw=2 et:
 pkgname=dvtm-git
 _gitname=dvtm
-pkgver=v0.14.r0.g0c7f8f9
+pkgver=v0.14.r16.g5d9ab4e
 pkgrel=1
 pkgdesc="Tiling window management for the console"
 url="http://www.brain-dump.org/projects/dvtm/"
@@ -13,30 +13,31 @@ depends=('ncurses')
 makedepends=('git')
 provides=('dvtm')
 conflicts=('dvtm')
-source=("git+http://repo.or.cz/${_gitname}.git")
-md5sums=('SKIP')
+source=("git+https://github.com/martanne/${_gitname}.git"
+        'config.h')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
-  cd $_gitname
+	cd "${srcdir}/${_gitname}"
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_gitname
-  if [ -f ../../config.h ]; then
-    cp ../../config.h .
-  fi
+	cd "${srcdir}/${_gitname}"
+
+  cp "${srcdir}/config.h" .
 }
 
 build() {
-  cd $_gitname
+	cd "${srcdir}/${_gitname}"
 
   make clean
   make
 }
 
 package() {
-  cd $_gitname
+	cd "${srcdir}/${_gitname}"
 
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
