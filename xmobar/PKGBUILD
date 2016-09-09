@@ -3,7 +3,7 @@
 # Contributor: Arch Haskell Team <arch-haskell@haskell.org>
 
 pkgname=xmobar
-pkgver=0.23.1
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="A Minimalistic Text Based Status Bar"
 url="http://hackage.haskell.org/package/xmobar"
@@ -14,7 +14,8 @@ depends=('gmp' 'libxft' 'libxinerama' 'libxrandr' 'dbus' 'libxpm')
 makedepends=('ghc' 'cabal-install')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/xmobar/$pkgver/xmobar-$pkgver.tar.gz)
-md5sums=('f97a10f049796f55cc3d13ee68d07eac')
+md5sums=('8d0b8e12da0346ab74b113b83bed11d0')
+
 
 build() {
     cd ${srcdir}/xmobar-$pkgver
