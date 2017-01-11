@@ -1,10 +1,11 @@
 # Maintainer: mail at ericmrak dot info
 
 pkgname=ttf-input
-pkgver=20150831
+pkgver=20170110
 pkgrel=1
 pkgdesc="Fonts for Code, from Font Bureau"
 arch=('any')
+groups=('modified')
 url="http://input.fontbureau.com/"
 license=('custom:Font Software License Agreement')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
