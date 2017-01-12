@@ -5,6 +5,7 @@ pkgver=2.04
 pkgrel=2
 pkgdesc="A drop-in replacement font pack for Arial and Times New Roman (Aerial/Tymes/Veranda)"
 arch=('any')
+groups=('modified')
 url="http://ostatic.com/arkpandorafonts/"
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
