@@ -1,0 +1,12 @@
+flags:
+    xmobar:
+        with_utf8: true
+        with_xft: true
+        with_dbus: true
+        with_threaded: true
+        with_xpm: true
+packages:
+- '.'
+extra-deps:
+- X11-xft-0.3.1
+resolver: lts-4.1
