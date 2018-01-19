@@ -1,0 +1,13 @@
+post_install() {
+    echo "
+First set up your API key and A record to monitor:
+
+# cp /etc/ddns/examples/<provider>/A-domain.tld /etc/ddns/<provider>/A-mydomain.com
+# vi /etc/ddns/<provider>/A-mydomain.com
+
+To enable daily checking of your dynamic IP address:
+
+# systemctl enable ddns.timer
+# systemctl start ddns.timer
+"
+}

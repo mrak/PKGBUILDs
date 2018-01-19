@@ -1,0 +1,37 @@
+# Maintainer: Eric Mrak <mail AT ericmrak DOT info>
+pkgname=ddns-git
+_gitname='ddns'
+pkgver=a66fa54
+pkgrel=1
+pkgdesc="Periodically checks the current public IP and updates A/AAAA records."
+arch=("any")
+url="https://github.com/mrak/ddns.git"
+license=('WTF')
+depends=()
+makedepends=('git')
+provides=('ddns')
+conflicts=('ipcheck' 'ddns')
+source=('git+https://github.com/mrak/ddns.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$_gitname"
+  git describe --always | sed 's|-|.|g'
+}
+
+package() {
+  cd "$_gitname"
+
+  install -D -m755 bin/ddns ${pkgdir}/usr/bin/ddns
+  install -D -m755 bin/ddns.linode ${pkgdir}/usr/bin/ddns.linode
+
+  install -D -m644 systemd/ddns.service ${pkgdir}/usr/lib/systemd/system/ddns.service
+  install -D -m644 systemd/ddns.timer ${pkgdir}/usr/lib/systemd/system/ddns.timer
+
+  install -D -m600 examples/linode/A-domain.tld ${pkgdir}/etc/ddns/examples/linode/A-domain.tld
+  install -D -m600 examples/linode/AAAA-domain.tld ${pkgdir}/etc/ddns/examples/linode/AAAA-domain.tld
+
+  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/$_gitname/LICENSE
+}
+
+# vim:set ts=2 sw=2 et:
