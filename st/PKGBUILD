@@ -2,35 +2,35 @@
 # Maintainer: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st
-pkgver=0.8.4
-pkgrel=1
+pkgver=0.9
+pkgrel=4
 pkgdesc='A simple virtual terminal emulator for X.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 groups=('modified')
 license=('MIT')
-depends=('libxft' 'libxext' 'xorg-fonts-misc')
-makedepends=('ncurses')
+depends=(libxft)
 url="http://st.suckless.org"
-source=(http://dl.suckless.org/st/$pkgname-$pkgver.tar.gz
+source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
+        terminfo.patch
         config.h)
-md5sums=('e00b074c0e5d55513745c99f027b7a34'
-         'SKIP')
+sha256sums=('f36359799734eae785becb374063f0be833cf22f88b4f169cd251b99324e08e7'
+            'f9deea445a5c6203a0e8e699f3c3b55e27275f17fb408562c4dd5d649edeea23'
+            'SKIP')
+_sourcedir=$pkgname-$pkgver
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  # skip terminfo which conflicts with nsurses
-  sed -i '/tic /d' Makefile
-  cp $srcdir/config.h config.h
+  patch -d "$_sourcedir" -p 0 < terminfo.patch
+  cp "$BUILDDIR/config.h" "$_sourcedir"
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  make -C "$_sourcedir" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  local shrdir="$pkgdir/usr/share"
+  make -C "$_sourcedir" PREFIX=/usr DESTDIR="$pkgdir" install
+  install -D -m 0644 -t "$shrdir/licenses/$pkgname" "$_sourcedir/LICENSE"
+  install -D -m 0644 -t "$shrdir/doc/$pkgname" "$_sourcedir/README" $BUILDDIR/README.terminfo.rst
+  install -D -m 0644 -t "$shrdir/$pkgname" "$_sourcedir/st.info"
 }
