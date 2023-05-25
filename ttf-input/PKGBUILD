@@ -1,15 +1,13 @@
 # Maintainer: mail at ericmrak dot info
 
 pkgname=ttf-input
-pkgver=20170110
+pkgver=20220502
 pkgrel=1
-pkgdesc="Fonts for Code, from Font Bureau"
+pkgdesc='Fonts for code from DJR & Font Bureau'
 arch=('any')
 groups=('modified')
-url="http://input.fontbureau.com/"
-license=('custom:Font Software License Agreement')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-makedepends=()
+url='https://input.djr.com/'
+license=('custom')
 conflicts=()
 
 _fontSelection=whole
@@ -23,15 +21,16 @@ _braces=straight
 _preset=sourcecode
 _line_height="1.2"
 
-source=("Input-Font.zip::http://input.fontbureau.com/build/?fontSelection=${_fontSelection}&a=${_a}&g=${_g}&i=${_i}&l=${_l}&zero=${_zero}&asterisk=${_asterisk}&braces=${_braces}&preset=${_preset}&line-height=${_line_height}&accept=I+do&email=")
-sha256sums=('97bf7cd2eb2b43042343cd0085de0c8d8ab985711d850868a316d9263e6e4f67')
+source=("Input-Font.zip::${url}build/?fontSelection=${_fontSelection}&a=${_a}&g=${_g}&i=${_i}&l=${_l}&zero=${_zero}&asterisk=${_asterisk}&braces=${_braces}&preset=${_preset}&line-height=${_line_height}&accept=I+do&email=")
+sha256sums=('9a58e2a5a0952eb3514e19298a07b3b2cc33ed72499fb054bf88eb1c22386802')
 install=$pkgname.install
 
 package() {
-  mkdir -p $pkgdir/usr/share/fonts/TTF
-  find $srcdir/Input_Fonts -name '*.ttf' -exec cp {} $pkgdir/usr/share/fonts/TTF \;
-    chmod 644 $pkgdir/usr/share/fonts/TTF/*
+  mkdir -p ${pkgdir}/usr/share/fonts/TTF
+  find ${srcdir}/Input_Fonts -name '*.ttf' \
+    -exec cp {} ${pkgdir}/usr/share/fonts/TTF \;
+  chmod 644 ${pkgdir}/usr/share/fonts/TTF/*
 
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  cp $srcdir/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+  cp ${srcdir}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
 }
