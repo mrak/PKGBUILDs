@@ -8,7 +8,7 @@ arch=('any')
 groups=('modified')
 url="http://input.fontbureau.com/"
 license=('custom:Font Software License Agreement')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings')
 makedepends=()
 conflicts=()
 
@@ -24,7 +24,7 @@ _preset=sourcecode
 _line_height="1.2"
 
 source=("Input-Font.zip::http://input.fontbureau.com/build/?fontSelection=${_fontSelection}&a=${_a}&g=${_g}&i=${_i}&l=${_l}&zero=${_zero}&asterisk=${_asterisk}&braces=${_braces}&preset=${_preset}&line-height=${_line_height}&accept=I+do&email=")
-sha256sums=('97bf7cd2eb2b43042343cd0085de0c8d8ab985711d850868a316d9263e6e4f67')
+sha256sums=('db5067e58a63213baf406e9419fe43290a183eb8aa80116d8d6642d56791eac1')
 install=$pkgname.install
 
 package() {
